@@ -14,12 +14,12 @@
    org.clojure/data.xml {:mvn/version "0.2.0-alpha9"}
    org.clojure/tools.gitlibs {:mvn/version "2.5.197"}
    org.clojure/tools.cli {:mvn/version "1.1.230"}
-   com.cognitect.aws/api {:mvn/version "0.8.686" :exclusions [org.eclipse.jetty/jetty-http org.eclipse.jetty/jetty-client org.eclipse.jetty/jetty-util]}  ;; override for CVEs
+   com.cognitect.aws/api {:mvn/version "0.8.692" :exclusions [org.eclipse.jetty/jetty-http org.eclipse.jetty/jetty-client org.eclipse.jetty/jetty-util]}  ;; override for CVEs
      org.eclipse.jetty/jetty-http {:mvn/version "9.4.53.v20231009"}
      org.eclipse.jetty/jetty-client {:mvn/version "9.4.53.v20231009"}
      org.eclipse.jetty/jetty-util {:mvn/version "9.4.53.v20231009"}
-   com.cognitect.aws/endpoints {:mvn/version "1.1.12.626"}
-   com.cognitect.aws/s3 {:mvn/version "848.2.1413.0"}
+   com.cognitect.aws/endpoints {:mvn/version "1.1.12.718"}
+   com.cognitect.aws/s3 {:mvn/version "868.2.1580.0"}
    javax.inject/javax.inject {:mvn/version "1"}
  }
  :aliases {
@@ -30,7 +30,7 @@
           :main-opts ["-m" "clj-kondo.main" "--lint" "src/main/clojure" "--lint" "src/test/clojure"]}
 
    ;; clj -M:cve
-   :cve {:extra-deps {io.github.clj-holmes/clj-watson {:git/tag "v5.0.0" :git/sha "c2349f5"}}
+   :cve {:extra-deps {io.github.clj-holmes/clj-watson {:git/tag "v5.1.2" :git/sha "c2349f5"}}
          :extra-paths [".clj-watson"]
          :jvm-opts ["--illegal-access=deny"]
          :main-opts ["-m" "clj-watson.cli" "scan" "-p" "deps.edn"]}

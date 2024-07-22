@@ -109,7 +109,7 @@
     <dependency>
       <groupId>com.cognitect.aws</groupId>
       <artifactId>api</artifactId>
-      <version>0.8.686</version>
+      <version>0.8.692</version>
       <exclusions>
         <exclusion>
           <groupId>org.eclipse.jetty</groupId>
@@ -143,12 +143,12 @@
     <dependency>
       <groupId>com.cognitect.aws</groupId>
       <artifactId>endpoints</artifactId>
-      <version>1.1.12.626</version>
+      <version>1.1.12.718</version>
     </dependency>
     <dependency>
       <groupId>com.cognitect.aws</groupId>
       <artifactId>s3</artifactId>
-      <version>848.2.1413.0</version>
+      <version>868.2.1580.0</version>
     </dependency>
     <dependency>
       <groupId>javax.inject</groupId>
