@@ -31,7 +31,7 @@ Also see:
 
 # Release Information
 
-Latest release: 0.19.1432
+Latest release: 0.20.1440
 
 * [All released versions](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22tools.deps%22)
 
