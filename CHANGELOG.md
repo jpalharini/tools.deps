@@ -3,6 +3,8 @@ Changelog
 
 *Also see [Tools and installer changelog](https://github.com/clojure/brew-install/blob/1.12.0/CHANGELOG.md)*
 
+* next
+  * Update to tools.deps.cli 0.11.72
 * 0.21.1445 on Sep 5, 2024
   * Update to Clojure 1.12.0
 * 0.20.1440 on Aug 5, 2024
