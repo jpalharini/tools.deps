@@ -29,10 +29,37 @@
          (deps/merge-edns [(deps/root-deps) (deps/slurp-deps f)])
          (deps/root-deps)))))
 
+(defn- aliases-args
+  "Given a deps map read from a deps.edn file and a coll of aliases, returns a map
+   of supported arguments defined in aliases. Duplicate keys have their values merged,
+   with precedence set by the order of aliases."
+  [deps-map aliases]
+  (let [extra-args       (->> aliases
+                              (remove nil?)
+                              (map #(get-in (:aliases deps-map) [%])))
+        unsupported-args (->> extra-args
+                              (map #(-> % (dissoc :extra-deps) (keys)))
+                              (flatten) (remove nil?) (set))]
+    (when-not (empty? unsupported-args)
+      (io/printerrln "WARNING: Args" unsupported-args "in :deps/aliases ignored"))
+    (->> (map #(select-keys % [:extra-deps]) extra-args)
+         (apply merge-with merge))))
+
+(defn- extra-deps-map
+  [deps-map aliases]
+  (->> (aliases-args deps-map aliases)
+       (vec)
+       (reduce-kv (fn [m _ v] (merge m v)) {})))
+
+(defn- deps-seq
+  [deps-map aliases]
+  (seq (merge (:deps deps-map)
+              (:extra-deps (extra-deps-map deps-map aliases)))))
+
 (defmethod ext/coord-deps :deps
-  [_lib {:keys [deps/root] :as _coord} _mf config]
+  [_lib {:keys [deps/root deps/aliases] :as _coord} _mf config]
   (dir/with-dir (jio/file root)
-    (seq (:deps (deps-map config root)))))
+                (deps-seq (deps-map config root) aliases)))
 
 (defmethod ext/coord-paths :deps
   [_lib {:keys [deps/root] :as _coord} _mf config]
